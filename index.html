@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GalleryView by MehtaVerse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+      /* GRAPHITE SYSTEM CSS VARIABLES */
+      :root {
+        --background: #f0f0f0;
+        --foreground: #333333;
+        --card: #f5f5f5;
+        --card-foreground: #333333;
+        --popover: #f5f5f5;
+        --popover-foreground: #333333;
+        --primary: #606060;
+        --primary-foreground: #ffffff;
+        --secondary: #e0e0e0;
+        --secondary-foreground: #333333;
+        --muted: #d9d9d9;
+        --muted-foreground: #666666;
+        --accent: #c0c0c0;
+        --accent-foreground: #333333;
+        --destructive: #cc3333;
+        --destructive-foreground: #ffffff;
+        --border: #d0d0d0;
+        --input: #e0e0e0;
+        --ring: #606060;
+        --radius: 0.35rem;
+        --sidebar: #eaeaea;
+        --sidebar-foreground: #333333;
+        --sidebar-primary: #606060;
+        --sidebar-primary-foreground: #ffffff;
+        --sidebar-accent: #c0c0c0;
+        --sidebar-accent-foreground: #333333;
+        --sidebar-border: #d0d0d0;
+        --sidebar-ring: #606060;
+      }
+
+      .dark {
+        --background: #1a1a1a;
+        --foreground: #d9d9d9;
+        --card: #202020;
+        --card-foreground: #d9d9d9;
+        --popover: #202020;
+        --popover-foreground: #d9d9d9;
+        --primary: #a0a0a0;
+        --primary-foreground: #1a1a1a;
+        --secondary: #303030;
+        --secondary-foreground: #d9d9d9;
+        --muted: #2a2a2a;
+        --muted-foreground: #808080;
+        --accent: #404040;
+        --accent-foreground: #d9d9d9;
+        --destructive: #e06666;
+        --destructive-foreground: #ffffff;
+        --border: #353535;
+        --input: #303030;
+        --ring: #a0a0a0;
+        --sidebar: #1f1f1f;
+        --sidebar-foreground: #d9d9d9;
+        --sidebar-primary: #a0a0a0;
+        --sidebar-primary-foreground: #1a1a1a;
+        --sidebar-accent: #404040;
+        --sidebar-accent-foreground: #d9d9d9;
+        --sidebar-border: #353535;
+        --sidebar-ring: #a0a0a0;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--background);
+        color: var(--foreground);
+      }
+      
+      /* Material Symbols helper class for specific sizing overrides if needed */
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+      
+      /* Scrollbar styling for a cleaner app look */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--background); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border); 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary); 
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              background: 'var(--background)',
+              foreground: 'var(--foreground)',
+              card: {
+                DEFAULT: 'var(--card)',
+                foreground: 'var(--card-foreground)',
+              },
+              popover: {
+                DEFAULT: 'var(--popover)',
+                foreground: 'var(--popover-foreground)',
+              },
+              primary: {
+                DEFAULT: 'var(--primary)',
+                foreground: 'var(--primary-foreground)',
+              },
+              secondary: {
+                DEFAULT: 'var(--secondary)',
+                foreground: 'var(--secondary-foreground)',
+              },
+              muted: {
+                DEFAULT: 'var(--muted)',
+                foreground: 'var(--muted-foreground)',
+              },
+              accent: {
+                DEFAULT: 'var(--accent)',
+                foreground: 'var(--accent-foreground)',
+              },
+              destructive: {
+                DEFAULT: 'var(--destructive)',
+                foreground: 'var(--destructive-foreground)',
+              },
+              border: 'var(--border)',
+              input: 'var(--input)',
+              ring: 'var(--ring)',
+              sidebar: {
+                DEFAULT: 'var(--sidebar)',
+                foreground: 'var(--sidebar-foreground)',
+                primary: 'var(--sidebar-primary)',
+                'primary-foreground': 'var(--sidebar-primary-foreground)',
+                accent: 'var(--sidebar-accent)',
+                'accent-foreground': 'var(--sidebar-accent-foreground)',
+                border: 'var(--sidebar-border)',
+                ring: 'var(--sidebar-ring)',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Georgia', 'serif'],
+              mono: ['Fira Code', 'monospace'],
+            },
+            borderRadius: {
+              DEFAULT: 'var(--radius)',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
